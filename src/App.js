@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Buscador from "./componentes/Buscador.js";
 // import logo from './logo.svg';
 // import "./App.css";
+import Resultado from "./componentes/Resultado.js";
 
 class App extends Component {
   state = {
@@ -47,6 +48,11 @@ class App extends Component {
           />
         </div>
         {/* {this.state.termino} */}
+        <Resultado
+
+          imagenes={this.state.imagenes}
+        
+        />
       </div>
     );
   }
