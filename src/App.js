@@ -4,43 +4,52 @@ import Buscador from "./componentes/Buscador.js";
 // import "./App.css";
 
 class App extends Component {
-
   state = {
+    termino: "",
+    imagenes: []
+  };
 
-    termino: 'cafe'
-    
-  }
+  consultarApi = () => {
+    const termino = this.state.termino;
 
-  datosBusqueda = ( termino ) => { 
-    
+    const url = `https://pixabay.com/api/?key=14569249-bb6888812c38e00acf06754c4&q=${termino}
+                &per_page=30`;
+
+    // console.log(url);
+
+    fetch(url)
+      .then(respuesta => respuesta.json())
+      //.then(resultado => console.log(resultado.hits));
+      .then(resultado => this.setState({ imagenes: resultado.hits }));
+  };
+
+  datosBusqueda = termino => {
     // console.log(termino);
 
-    this.setState({
+    this.setState(
+      {
+        termino
+      },
+      () => {
+        this.consultarApi();
+      }
+    );
+  };
 
-      termino
-      
-    })
-    
-  }
-
-  render() { 
-
+  render() {
     return (
       <div className="container">
         <div className="jumbotron">
           <p className="lead text-center">Buscador de imagenes</p>
           <Buscador
-            // mensaje="Buscador..." 
-            datosBusqueda = { this.datosBusqueda }
+            // mensaje="Buscador..."
+            datosBusqueda={this.datosBusqueda}
           />
         </div>
-        {this.state.termino}
+        {/* {this.state.termino} */}
       </div>
     );
-
-
   }
-  
 }
 
 export default App;
