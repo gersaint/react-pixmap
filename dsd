@@ -1,0 +1,33 @@
+[33mcommit f38ee3667f0ffb0aef18648edf7d7b1bff3b3062[m
+Author: Gersaint Cruz <gersa_int@outlook.com>
+Date:   Mon Dec 9 13:44:11 2019 -0600
+
+    Inicio Proyecto: import bootstrap, Nuevo componente: Buscador.js ( inputs: type: text and button/submit  )
+
+:000000 100644 0000000 a788fde A	public/css/bootstrap.min.css
+:000000 100644 0000000 ac890bf A	src/componentes/Buscador.js
+
+[33mcommit ed8760f6a37d0f279ba536a44d12f729ce220745[m
+Author: Gersaint Cruz <gersa_int@outlook.com>
+Date:   Mon Dec 9 13:09:39 2019 -0600
+
+    Initial commit from Create React App
+
+:000000 100644 0000000 4d29575 A	.gitignore
+:000000 100644 0000000 859d27a A	README.md
+:000000 100644 0000000 02daf27 A	package-lock.json
+:000000 100644 0000000 4eb73c6 A	package.json
+:000000 100644 0000000 a11777c A	public/favicon.ico
+:000000 100644 0000000 aa069f2 A	public/index.html
+:000000 100644 0000000 fc44b0a A	public/logo192.png
+:000000 100644 0000000 a4e47a6 A	public/logo512.png
+:000000 100644 0000000 080d6c7 A	public/manifest.json
+:000000 100644 0000000 01b0f9a A	public/robots.txt
+:000000 100644 0000000 74b5e05 A	src/App.css
+:000000 100644 0000000 ce9cbd2 A	src/App.js
+:000000 100644 0000000 4db7ebc A	src/App.test.js
+:000000 100644 0000000 ec2585e A	src/index.css
+:000000 100644 0000000 87d1be5 A	src/index.js
+:000000 100644 0000000 6b60c10 A	src/logo.svg
+:000000 100644 0000000 8703ddb A	src/serviceWorker.js
+:000000 100644 0000000 74b1a27 A	src/setupTests.js
