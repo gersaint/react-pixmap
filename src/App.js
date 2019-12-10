@@ -6,22 +6,61 @@ import Resultado from "./componentes/Resultado.js";
 
 class App extends Component {
   state = {
-    termino: "",
-    imagenes: []
+    termino : "",
+    imagenes : [],
+    pagina :  ''
   };
 
+  paginaAnterior = () => {
+
+    
+    // leer el state de la pagina actual
+    let pagina = this.state.pagina;
+
+    // Leer si la pagina es 1, ya no ir hacia atras
+    if ( pagina === 1 ) return null;
+
+    // sumar a la pagina actual 
+    pagina -= 1;
+
+    // Agregar el cambio al state
+    this.setState( { pagina } );
+
+    // console.log( pagina );
+    // console.log("siguiente..");
+
+  }
+
+
+  paginaSiguiente = () => {
+
+    //leer el state de la pagina actual
+    let pagina = this.state.pagina;
+
+    //sumar a la pagina actual 
+    pagina += 1;
+
+    //Agregar el cambio al state
+    this.setState( { pagina } );
+
+    // console.log( pagina );
+    // console.log("siguiente..");
+
+  }
+
   consultarApi = () => {
+    
     const termino = this.state.termino;
+    const pagina = this.state.pagina;
 
-    const url = `https://pixabay.com/api/?key=14569249-bb6888812c38e00acf06754c4&q=${termino}
-                &per_page=30`;
+    const url = `https://pixabay.com/api/?key=14569249-bb6888812c38e00acf06754c4&q=${termino}&per_page=30&page=${pagina}`;
 
-    // console.log(url);
+    console.log(url);
 
     fetch(url)
       .then(respuesta => respuesta.json())
       //.then(resultado => console.log(resultado.hits));
-      .then(resultado => this.setState({ imagenes: resultado.hits }));
+      .then(resultado => this.setState({ imagenes: resultado.hits })); 
   };
 
   datosBusqueda = termino => {
@@ -29,7 +68,8 @@ class App extends Component {
 
     this.setState(
       {
-        termino
+        termino : termino,
+        pagina : 1
       },
       () => {
         this.consultarApi();
@@ -47,8 +87,18 @@ class App extends Component {
             datosBusqueda={this.datosBusqueda}
           />
         </div>
-      
-        <Resultado imagenes={this.state.imagenes} />          
+
+        {/* <Resultado imagenes={this.state.imagenes} /> */}
+
+        <div className= " row justify-content-center">
+
+          <Resultado 
+            imagenes={this.state.imagenes}
+            paginaAnterior={this.paginaAnterior}  
+            paginaSiguiente={this.paginaSiguiente}
+          /> 
+
+        </div>
       </div>
     );
   }

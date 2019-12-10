@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Imagen from "./Imagen"
+import Paginacion from "./Paginacion";
 
 class Resultado extends Component {
-  // state = {  }
-
-  // nos quedamos en la creacion de la imagen min --> 01.09.14
-
+  
   mostrarImagenes = () => {
 
       const imagenes = this.props.imagenes;      
@@ -16,8 +14,21 @@ class Resultado extends Component {
 
           <React.Fragment>
               <div className="col-12 p-5 row">
-                 
+                 { imagenes.map(imagen => (
+
+                   <Imagen 
+
+                    key = {imagen.id}
+                    imagen = {imagen}
+
+                   />
+
+                 ))}
               </div>
+              < Paginacion 
+                paginaAnterior={this.props.paginaAnterior}  
+                paginaSiguiente={this.props.paginaSiguiente}              
+              /> 
           </React.Fragment>
 
       )
