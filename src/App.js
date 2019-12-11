@@ -11,6 +11,13 @@ class App extends Component {
     pagina :  ''
   };
 
+  scroll = () => {
+
+    const elemento = document.querySelector('.jumbotron');
+    elemento.scrollIntoView( 'smooth', 'start' );
+
+  }
+
   paginaAnterior = () => {
 
     
@@ -24,7 +31,12 @@ class App extends Component {
     pagina -= 1;
 
     // Agregar el cambio al state
-    this.setState( { pagina } );
+    this.setState( { pagina } , () => {
+
+      this.consultarApi();
+      this.scroll();
+
+    });
 
     // console.log( pagina );
     // console.log("siguiente..");
@@ -41,7 +53,12 @@ class App extends Component {
     pagina += 1;
 
     //Agregar el cambio al state
-    this.setState( { pagina } );
+    this.setState( { pagina }, () => {
+
+      this.consultarApi();
+      this.scroll();
+
+    });
 
     // console.log( pagina );
     // console.log("siguiente..");
@@ -60,7 +77,7 @@ class App extends Component {
     fetch(url)
       .then(respuesta => respuesta.json())
       //.then(resultado => console.log(resultado.hits));
-      .then(resultado => this.setState({ imagenes: resultado.hits })); 
+      .then(resultado => this.setState({ imagenes: resultado.hits }));
   };
 
   datosBusqueda = termino => {
@@ -74,7 +91,7 @@ class App extends Component {
       () => {
         this.consultarApi();
       }
-    );
+    ); 
   };
 
   render() {
